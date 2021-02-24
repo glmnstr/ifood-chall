@@ -146,4 +146,6 @@ def me():
 	return render_template('me.html', data = cl.profile(session['tokens'].get("access_token")))
 
 nav.init_app(app)
+
+if __name__ == '__main__':
 app.run()
