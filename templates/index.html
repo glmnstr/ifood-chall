@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <style type="text/css">
+    .nBar{
+      border-style: solid ;
+      margin:20px;
+    }
+    .container{
+            
+      align-content: center;
+      margin:40px;
+    }
+
+    #playlist {
+
+    background-color: #9a9797;
+    }
+
+    #track{
+      border-width: 1px;
+      border-style:solid;
+    }
+    #img_bt{
+      width: 30%;
+      height: 30%;
+    }
+  </style>
+    <meta charset="UTF-8">
+    <title>Spotify Recommend API / Ifood </title>
+    {% block html_head %}{% endblock %}
+</head>
+<body>
+<div class = "nBar">
+{% block navbar %}
+    <div class = "container">
+      <div class="row">
+    <div class = "col">
+   <form action = "/" method="GET">
+    <input type= "text" name = "cidade">
+    <input  type="submit" name="submit_button" value ="Selecionar" >
+   </form>
+        
+    Cidade Selecionada : {{temp[0]}}<br>
+    Temperatura: {{temp[1]}}
+     </div>
+
+      <div class = "col">{{user_info.get('country')}}</div> 
+</div>
+</div>
+</div>
+{% endblock %}
+   
+  <div class= "container">
+    <div class= "row">
+   <div class = "col" id = "playlist">
+      
+   	{%for post in posts['tracks']%}
+
+   		{%for b in post['album']['artists']%}
+
+        <div class= "row">
+   			
+          <div class = "col-lg" id = "track">{{b.get("name")}}</div> 
+          <div class = "col-lg">{{post.get("name")}} </div> 
+        
+        </div>
+   		{% endfor %}
+   	{% endfor %}
+      
+    </div>
+     <div class = "col" id = "pedidos">
+
+    <span class = "food_bt"> <img id = "img_bt" src = "{{url_for('static', filename = 'img/pizza-ilust.jpg')}}"/></span>
+    <span class = "food_bt"><img id = "img_bt" src = "{{url_for('static', filename = 'img/hamburguer-ilust.jpg')}}"/></span>
+    <span class = "food_bt"><img id = "img_bt" src = "{{url_for('static', filename = 'img/sushi-ilust.jpg')}}"/></span>
+   </div>
+
+
+  </div>
+   </div>
+</body>
+</html>
