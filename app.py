@@ -142,7 +142,7 @@ def callback():
 
 def me():
 	token = request.cookies.get("access_token")
-	print(session['tokens'])
+	print(session)
 	return render_template('me.html', data = cl.profile(session['tokens'].get("access_token")))
 
 nav.init_app(app)
