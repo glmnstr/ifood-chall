@@ -69,7 +69,7 @@ def index():
 		e = "londres"
 	
 	b = temp(int(weather.getWeatherByName(e)[1]))
-	return render_template("index.html", user_info = cl.profile(session["tokens"].get("access_token")) ,posts = cl.get_recommendations(b), temp = weather.getWeatherByName(e))
+	return render_template("index.html", posts = cl.get_recommendations(b), temp = weather.getWeatherByName(e))
 
 @app.route("/", methods = ['GET'])
 @app.route("/recommendations")
