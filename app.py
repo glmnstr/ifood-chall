@@ -62,7 +62,7 @@ def index():
 	#cidade = request.form.get("cidade")
 	print(request.remote_addr)
 	e = request.args.get("cidade")
-	if (session["tokens"]):
+	if (session):
 		users = cl.profile(session["tokens"].get("access_token"))
 
 	if e == None:
