@@ -63,13 +63,13 @@ def index():
 	print(request.remote_addr)
 	e = request.args.get("cidade")
 	#if (session):
-	users = cl.profile(session["tokens"].get("access_token"))
+	#users = cl.profile(session["tokens"].get("access_token"))
 
 	if e == None:
 		e = "londres"
 	
 	b = temp(int(weather.getWeatherByName(e)[1]))
-	return render_template("index.html", user_info = users ,posts = cl.get_recommendations(b), temp = weather.getWeatherByName(e))
+	return render_template("index.html", user_info = cl.profile(session["tokens"].get("access_token")) ,posts = cl.get_recommendations(b), temp = weather.getWeatherByName(e))
 
 @app.route("/", methods = ['GET'])
 @app.route("/recommendations")
