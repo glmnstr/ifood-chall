@@ -17,9 +17,9 @@ import os
 from dominate.tags import img
 from flask import jsonify
 
-client_id = "a16059247336496a830d64cc548ae852"
+client_id = "1868d64fcdf1495783caf9f16cb576a5"
 
-client_secret = "3cd7fd4c13fe433b9c16803dd8205a8a"
+client_secret = "85903853c28f479cb2c58b2bf8fb3601"
 
 cl = spotifyAPI(client_id, client_secret)
 weather = weather_API()
@@ -95,7 +95,7 @@ def getAuthorization():
 	headers = {
 	"client_id" : client_id, 
 	"response_type" : "code", 
-	"redirect_uri" : "http://127.0.0.1:5000/callback", 
+	"redirect_uri" : "https://musicrecommend500.herokuapp.com/callback", 
 	"scope" :"user-read-private"
 	}
 	endpoint = "https://accounts.spotify.com/authorize"
